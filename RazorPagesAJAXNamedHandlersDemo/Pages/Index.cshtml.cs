@@ -38,9 +38,9 @@ namespace RazorPagesAJAXNamedHandlersDemo.Pages
             SelectedCountry = Countries.First().Value;
         }
 
-        public JsonResult OnGetCountriesFilter(string continent)
-        {
-            return new JsonResult(_locationRepo.GetCountries(continent));
-        }
+public JsonResult OnGetCountriesFilter(string continent)
+{
+    return new JsonResult(_locationRepo.GetCountries(continent));
+}
     }
 }
