@@ -24,20 +24,24 @@
 </form>
 @section Scripts
 {
-    <script type="text/javascript">
-        $("#continentsList").change(function () {
-            var continent = $("#continentsList").val();
-            $.ajax({
-                url: "@Url.Page("/Index")?handler=CountriesFilter",
-                method: "GET",
-                data: { continent: continent },
-                success: function (data) {
-                    $("#countriesList option").remove();
-                    $.each(data, function (index, itemData) {
-                        $("#countriesList").append("<option value='" + itemData + "'>" + itemData + "</option>");
-                    });
-                }
-            })
-        });
-    </script>
+<script type="text/javascript">
+    $("#continentsList").change(function () {
+        var continent = $("#continentsList").val();
+        $.ajax({
+            url: "@Url.Page("/Index")?handler=CountriesFilter",
+            method: "GET",
+            data: { continent: continent },
+            success: function (data) {
+                //Remove all items in the countriesList
+                $("#countriesList option").remove();
+
+                //For each item retrieved in the AJAX call...
+                $.each(data, function (index, itemData) {
+                    //...append that item to the countriesList
+                    $("#countriesList").append("<option value='" + itemData + "'>" + itemData + "</option>");
+                });
+            }
+        })
+    });
+</script>
 }
